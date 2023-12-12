@@ -97,6 +97,60 @@ fn main() {
 
     let r3 = &mut s; // no problem
     println!("{}", r3);
+
+    // SLICE type
+
+    let first_space_index = first_word(&s);
+    println!("space index is {first_space_index}");
+
+    let _word = first_word(&s); // word will get the value 5
+    s.clear(); // this empties the String, making it equal to ""
+
+    // word still has the value 5 here, but there's no more string that
+    // we could meaningfully use the value 5 with. word is now totally invalid!
+
+    let s = String::from("hello world");
+    let _hello = &s[0..5];
+    let _world = &s[6..11];
+    println!("{_hello}#{}", _hello.len());
+    println!("{_world}#{}", _world.len());
+
+    let s = String::from("hello");
+
+    let _slice = &s[0..2]; // 'he'
+    let _slice = &s[..2]; // 'he'
+
+    let _len = s.len();
+    let _slice = &s[3.._len]; // llo
+    let _slice = &s[3..]; // llo
+
+    let mut _s: String = String::from("hello world");
+    let _word = first_word_v1(&s);
+    // _s.clear(); // error ! because Rust disallows the mutable reference in clear and the immutable reference in word from existing at the same time
+    // println!("the first word is: {}", _word);
+
+    // this is an immutable string (stored in binary)
+    // &str is an immutable reference
+    let _s = "Hello, world!";
+
+    let my_string = String::from("hello world");
+
+    // deref coercions
+    let _word = first_word_v2(&my_string[0..6]);
+    let _word = first_word_v2(&my_string[..]);
+
+    // works on references to `String`s, equivalent to whole slices of `String`s
+    let _word = first_word_v2(&my_string);
+
+    let my_string_literal = "hello world";
+
+    // works on slices of string literals, whether partial or whole
+    let _word = first_word_v2(&my_string_literal[0..6]);
+    let _word = first_word_v2(&my_string_literal[..]);
+
+    // String literals *are* string slices already
+    // this works too, without the slice syntax!
+    let _word = first_word_v2(my_string_literal);
 }
 
 fn takes_ownership(some_string: String) {
@@ -144,4 +198,46 @@ fn calculate_length_with_pointer(s: &String) -> usize {
 
 fn change(some_string: &mut String) {
     some_string.push_str(", world");
+}
+
+// takes a string by reference because we don't want to take ownership of it.
+// firstly only return the index of the first space
+fn first_word(s: &String) -> usize {
+    // because we need to browse the string letter by letter.
+    let bytes = s.as_bytes();
+    // enumerate returns a tuple so we can destructure the tuple
+    // enumerates returns a refernce so &
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    return s.len();
+}
+
+fn first_word_v1(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    // enumerate returns a tuple so we can destructure the tuple
+    // enumerates returns a refernce so &
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+
+    return &s[..];
+}
+
+fn first_word_v2(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    // enumerate returns a tuple so we can destructure the tuple
+    // enumerates returns a refernce so &
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+
+    return &s[..];
 }

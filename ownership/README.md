@@ -19,3 +19,8 @@ the function is over those values get popped of the stack.
 - values passed by reference are not borrowed so they are not droped when the reference stops being used.
 - values passed to function by reference can't be modifiable, you need to use mutable references.
 - a mutable variable can only have one mutable reference : this prevents data race at compile time.
+- slices is a kind of reference so it does not have ownership.
+
+# Summary
+- ownership, borrowing, and slices ensure memory safety in Rust programs at compile time.
+- the data is cleaned up from memory automatically when the owner goes out of scope.
