@@ -1,0 +1,8 @@
+- crate : smallest amount of code that the compiler can consider at a time. It can have two forms :
+    - a binary crate (program you can compile and run).
+    - a library crate (don't have a main function and don't compile to an executable).
+- crate root : it's the starting point of your package.
+- package is a bundle of one or more crates (containes a ```Cargo.toml``` at the root directory of your package). Underlyingly, it contains the binary crate for the ```cargo``` command, and a library crate the package depends on. A package can contain as much binary crates as you want but only one library crate.
+- The root crate of a package is ```src/main.rs```.
+- if the package directory contains ```src/lib.rs```, the package contains a library crate with the same name as the package, and ```src/lib.rs``` is its crate root.
+- package can have multiple binary crates by placing files in the ```src/bin``` directory.
