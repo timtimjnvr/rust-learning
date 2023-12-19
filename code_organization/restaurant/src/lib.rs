@@ -22,6 +22,21 @@ mod front_of_house {
     }
 }
 
+// re-exporting : make it callable in that code scope as it has been defined here
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant2() {
+    hosting::add_to_waitlist();
+}
+
+mod customer {
+    use crate::front_of_house::hosting as myname;
+
+    pub fn eat_at_restaurant() {
+        myname::add_to_waitlist();
+    }
+}
+
 // part of our library public API
 pub fn eat_at_restaurant() {
     // Absolute path

@@ -11,3 +11,16 @@
 # Modules
 -  ```src/main.rs``` and ```src/lib.rs``` are called crate roots. They form a module named ```crate``` at the root of the crate's module tree.
 - private/public: code within a module is private for its parent modules by default. Use ```pub``` to make a module public or to make items within a module public.
+- making a module public does not make its content public.
+
+# Paths
+
+- paths can be :
+    - absolute : starting from the crate root.
+    - relative : starting from the current module (use ```self```, self, ```super```)
+
+# Exporting 
+- when importing with ```use```. The name available is private. You can associate it with ```pub``` to make it public.
+
+# Separating modules into files
+- ```mod <path>``` load a module into scope. Rust looks in a file with the same name as the module for the code that goes into that module.
