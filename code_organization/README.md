@@ -1,3 +1,4 @@
+# Crates & packages
 - crate : smallest amount of code that the compiler can consider at a time. It can have two forms :
     - a binary crate (program you can compile and run).
     - a library crate (don't have a main function and don't compile to an executable).
@@ -6,3 +7,7 @@
 - The root crate of a package is ```src/main.rs```.
 - if the package directory contains ```src/lib.rs```, the package contains a library crate with the same name as the package, and ```src/lib.rs``` is its crate root.
 - package can have multiple binary crates by placing files in the ```src/bin``` directory.
+
+# Modules
+-  ```src/main.rs``` and ```src/lib.rs``` are called crate roots. They form a module named ```crate``` at the root of the crate's module tree.
+- private/public: code within a module is private for its parent modules by default. Use ```pub``` to make a module public or to make items within a module public.
