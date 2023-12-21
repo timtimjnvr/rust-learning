@@ -47,4 +47,70 @@ fn main() {
     for i in &mut v {
         *i += 50;
     }
+
+    // String
+
+    // create from scratch
+    let mut s = String::new();
+
+    // create from data
+    let data = "initial contents";
+
+    let s = data.to_string();
+
+    // the method also works on a literal directly:
+    let s = "initial contents".to_string();
+
+    // with from
+    let s = String::from("initial contents");
+
+    // String Update
+
+    let mut s = String::from("foo");
+    // append
+    // takes a string slice in parameter because we don't want to take ownership of the parameter.
+    s.push_str("bar");
+
+    // here we want to be able to use s2 after appending it to s1
+    let mut s1 = String::from("foo");
+    let s2 = "bar";
+    s1.push_str(s2);
+    // if push_str took ownership of s2 we would not be able to print s2
+    println!("s2 is {s2}");
+
+    let mut s = String::from("lo");
+    // push append a single character to the string
+    s.push('l');
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    // adding a reference of s2 ot s1
+    // actually takes ownership of s1, appends a copy of the contents of s2, and then returns ownership of the result.
+    let s3 = s1 + &s2;
+    // note s1 has been moved and can no longer be used
+    // we use a reference on the 2nd string because of the signature of the method called behind the sceene
+    // fn add(self, s: &str) -> String
+    // the compiler will coerce the &String argument into a &str (&s2 into &s2[..])
+
+    let new_s1 = String::from("tic");
+    let new_s12 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = new_s1 + "-" + &s2 + "-" + &s3;
+    let s = format!("{new_s12}-{s2}-{s3}");
+
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
+    // З
+    // д
+
+    for b in "Зд".bytes() {
+        println!("{b}");
+    }
+    // 208
+    // 151
+    // 208
+    // 180
 }
