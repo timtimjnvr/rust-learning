@@ -21,3 +21,9 @@ handle vector's elements.
 ["न", "म", "स्", "ते"] (4 letters that makes the world)
 - best way to browse a String is to specify whether you want byte or char (scalar values)
 - gettting graphme clusters is not provided by the standard library.
+
+# Hash Maps
+- stores a mapping of key values, determining how it places this values in memory using a has function (the default function is ```SipHash``` and provides security for DoS attacks involving hash maps).
+- hash maps data are stored on the heap.
+- for values that implements the ```Copy``` traits, values are copied into the hash map. For other values, the values will be moved and owned by the hash map.
+- if we insert references in the hash map, the references needs to be valid at least as long as the hash map is valid.
