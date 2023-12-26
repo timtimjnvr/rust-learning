@@ -20,7 +20,7 @@ handle vector's elements.
     - grapheme cluster :
 ["न", "म", "स्", "ते"] (4 letters that makes the world)
 - best way to browse a String is to specify whether you want byte or char (scalar values)
-- gettting graphme clusters is not provided by the standard library.
+- getting graphme clusters is not provided by the standard library.
 
 # Hash Maps
 - stores a mapping of key values, determining how it places this values in memory using a has function (the default function is ```SipHash``` and provides security for DoS attacks involving hash maps).

@@ -155,6 +155,7 @@ fn main() {
     let mut map = HashMap::new();
     // split_whitespace returns an iterator
     for word in text.split_whitespace() {
+        // or_insert returns a mutable reference to the value for the specified key.
         let count = map.entry(word).or_insert(0);
         *count += 1;
     }
