@@ -1,0 +1,3 @@
+- **generics** does not make code any slower ar run time, because Rust uses _Monomorphization_ at compile time. This step turns generic code into specific code by filling and generating the concrete types implementations.
+- a **trait** defines functionality a particular type has and can share with other types. **traits** are what is called **interface** in other languages.
+- we can implement a trait on a type only if at least _one of the trait_ **or** _the type_ is **local to our crate** (Without this rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use).
