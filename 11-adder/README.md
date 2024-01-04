@@ -3,3 +3,6 @@
 - run a specif test : `$ cargo test <test_name>` (it supports pattern matching).
 - you can exclude time consuming tests using `#[ignore]`, use `$ cargo test -- --ignored` to run ignored tests.
 - In the `#[cfg(test)]` annotation, `cfg` tells Rust that the following item should only be included given a `test` configuration option. Cargo only compiles this test code under a `cargo test` cmd in addition to the functions annotated with `#[test]`.
+- integration tests go into `tests` directory. To run all all tests in an ` integration_testing.rs` file under the `tests`directory, use`$ cargo test --test integration_test`
+- to build test helpers for integration testing, use `tests/common/mod.rs` file, this module will not be seen by cargo as a module to be tested.
+- binary crates can't be integration tested as the main code can't be imported. To do so, make a library/binary crate by importing functionnalities in main from lib and integration test functionnalities as described above.
