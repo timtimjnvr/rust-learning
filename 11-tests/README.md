@@ -1,0 +1,5 @@
+- `$ cargo test -- --test-threads=1` : to control the number of threads testing the binary simulteanously (no tests interference).
+- tests output are hidden by Rust (default), use `$ cargo test -- --show-output` to show test output.
+- run a specif test : `$ cargo test <test_name>` (it supports pattern matching).
+- you can exclude time consuming tests using `#[ignore]`, use `$ cargo test -- --ignored` to run ignored tests.
+- In the `#[cfg(test)]` annotation, `cfg` tells Rust that the following item should only be included given a `test` configuration option. Cargo only compiles this test code under a `cargo test` cmd in addition to the functions annotated with `#[test]`.
