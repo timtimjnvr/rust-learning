@@ -1,0 +1,1 @@
+- a good way of implementing a binary crate is to call the code from `lib.rs` into `main.rs`.
