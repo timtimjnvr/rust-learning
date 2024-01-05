@@ -1,16 +1,20 @@
 use std::env;
-use std::fs;
+use std::process;
+
+use minigrep::Config;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    let config = Config::build(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {err}");
+        process::exit(1);
+    });
 
-    let query = args.get(1).expect("The program needs at least 2 arguments");
-    let file_path = args.get(2).expect("The program needs at least 2 arguments");
+    println!("Searching for {}", config.query);
+    println!("In file {}", config.file_path);
 
-    let contents = fs::read_to_string(file_path).expect(&format!(
-        "Should have been able to read the file located at {}",
-        file_path,
-    ));
-
-    println!("With text:\n{contents}");
+    if let Err(e) = minigrep::run(config) {
+        println!("Application error: {e}");
+        process::exit(1);
+    }
 }
