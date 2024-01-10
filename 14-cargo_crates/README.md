@@ -1,0 +1,12 @@
+- profiles for dev & release can be configured in the `Cargo.toml` (it includes compiling optimization level, etc ...)
+- documentation can be generated using `cargo doc` (the generated doc goes into `target/doc` directory).
+- some sections advised to be documented :
+    - Panics
+    - Errors
+    - Safety
+- `///`: for item documentation
+- `//!`: to document the parent item
+- re exporting items at the root of you module is a good practice to make a public API clear.
+- `cargo yank --vers <version>` deprecates a version for new usage (does not prevent exiqting users that have a `Cargo.lock`)
+- **workspace** is a set of packages that share the same `Cargo.lock` and output directory (this ensure that the workspaces package will share the same versions for same dependencies).
+- each crate in a workspace need to be published separately on crate.io.
