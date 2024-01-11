@@ -62,4 +62,14 @@ impl<T> Deref for MyBox<T> {
 
 # Preventing Reference Cycles: Turning an Rc<T> into a Weak<T>
 
+- Strong references are how you can share ownership of an `Rc<T>` instance.
+- `Rc::clone` increases the `strong_count` of an `Rc<T>` instance, and an `Rc<T>` instance is only cleaned up if its `strong_count` is 0.
+- Weak references don't express an ownership and does not affect `strong_count` so using them can prevent the reference cycle.
 - To create a weak reference out of a reference contained by `Rc<T>`, we use the `Rc::downgrade` function to create a `Weak<T>`.
+
+# Summary
+
+- the `Box<T>` type has a **known size** and points to data allocated on the heap.
+- the `Rc<T>` type keeps track of the **number of references to data on the heap** so that data can have **multiple owners**.
+- the `RefCell<T>` type with its **interior mutability** gives us a type that we can use when we need an immutable type but need **to change an inner value** of that type; it also **enforces the borrowing rules at runtime** instead of at compile time.
+- the `Weak<T>` is a pointer that does not affect the number of references of Rc<T> prevents references cycles (memory leaks).
