@@ -1,0 +1,5 @@
+- To ensure safe concurrency, Go uses messages passing : “Do not communicate by sharing memory; instead, share memory by communicating.” (from the GoLang doc).
+- Rust has it owns implementation of channels.
+- mutexes are error prone (forget to unlock or to acquire lock). People prefer channels (“do not communicate by sharing memory." from GoLang documentation). Thanks to Rust’s type system and ownership rules, you can’t get locking and unlocking wrong.
+- same way we use `RefCell<T>` to allow us to mutate contents inside an `Rc<T>`, we use `Mutex<T>` to mutate contents inside an `Arc<T>`.
+- `Mutex<T>` comes with the risk of creating deadlocks, which Rust can't guard you against.
