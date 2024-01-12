@@ -3,3 +3,5 @@
 - mutexes are error prone (forget to unlock or to acquire lock). People prefer channels (“do not communicate by sharing memory." from GoLang documentation). Thanks to Rust’s type system and ownership rules, you can’t get locking and unlocking wrong.
 - same way we use `RefCell<T>` to allow us to mutate contents inside an `Rc<T>`, we use `Mutex<T>` to mutate contents inside an `Arc<T>`.
 - `Mutex<T>` comes with the risk of creating deadlocks, which Rust can't guard you against.
+- The `Send` marker trait indicates that ownership of values of the type implementing `Send` can be transferred between threads.
+- The `Sync` marker trait indicates that it is safe for the type implementing `Sync` to be referenced from multiple threads (any type `T` is `Sync` if `&T` (an immutable reference to `T`) is `Send`, meaning the reference can be sent safely to another thread.)
