@@ -1,0 +1,3 @@
+- Rust has encapsulation
+- Rust does not supports inheritance but we can fake it (by implementing the default method for a trait).
+- Rust favors **bounded parametric polymorphism** instead of polymorphism through inheritance : using generic types that implements certains traits allows them be polymorphic.
