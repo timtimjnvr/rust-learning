@@ -1,3 +1,5 @@
+# Unsafe Rust
+
 - if you use a reference in unsafe code, it will still be checked (borrow checker or other Rust safety checks). The unsafe keyword only gives you access to five features that are then not checked by the compiler for memory safety :
 - Raw pointers
 - Calling an Unsafe Function or Method
@@ -6,3 +8,5 @@
 - Accessing or Modifying a Mutable Static Variable (global variables).
 - Implementing an Unsafe Trait
 - Accessing Fields of a Union
+
+Adavanced Traits
