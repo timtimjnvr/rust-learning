@@ -13,6 +13,7 @@ extern "C" {
     // unsafe function because other programming languages don't enforce Rust rules and guarantees.
     fn abs(input: i32) -> i32;
 }
+
 fn main() {
     let mut num = 5;
 
